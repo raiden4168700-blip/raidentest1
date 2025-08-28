@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Localisation GPS Securitas</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      text-align: center;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: flex-start;
+      min-height: 100vh;
+      position: relative; 
+      background: #818381 
+      background-size: 30%;
+    }
+
+    .logo-top-left {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      width: 80px; 
+      height: auto;
+    }
+
+    .logo-top-right {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 80px; 
+      height: auto;
+    }
+
+    h1 {
+      color: #ff0000;
+      margin-bottom: 30px;
+      margin-top: 50px; 
+    }
+
+    table {
+      margin: 20px auto; 
+      border-collapse: collapse;
+      background: rgba(209, 206, 206, 0.95);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+
+    td, th {
+      border: 1px solid #ccc;
+      padding: 10px 20px;
+      text-align: center; 
+    }
+
+    input {
+      padding: 5px;
+      width: 140px;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .button-container {
+      margin-top: 20px; 
+    }
+
+    .button-container button {
+      margin: 5px 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      background: #2e7d32;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .button-container button:hover {
+      background: #1b5e20;
+    }
+  </style>
+</head>
+<body>
+  <img src="https://hightechcampus.com/storage/2023/securitas.png" alt="Securitas Logo" class="logo-top-left">
+  <img src="https://hightechcampus.com/storage/2023/securitas.png" alt="Securitas Logo" class="logo-top-right">
+
+  <h1>Localisation GPS</h1>
+
+  <table>
+    <tr>
+      <th>Latitude</th>
+      <td><input type="text" id="lat" value="48.8566"></td>
+    </tr>
+    <tr>
+      <th>Longitude</th>
+      <td><input type="text" id="lng" value="2.3522"></td>
+    </tr>
+  </table>
+
+  <div class="button-container">
+    <button onclick="openGoogleMapsSatellite()">Localisation</button>
+  </div>
+
+  <script>
+    function openGoogleMapsSatellite() {
+      const latInput = document.getElementById("lat").value;
+      const lngInput = document.getElementById("lng").value;
+
+      const lat = parseFloat(latInput.replace(",", "."));
+      const lng = parseFloat(lngInput.replace(",", "."));
+
+      if (isNaN(lat) || isNaN(lng)) {
+        alert("Veuillez entrer des coordonnées valides.");
+        return;
+      }
+
+      window.open(`https://www.google.com/maps?q=${lat},${lng}&t=k&z=18`, "_blank");
+    }
+  </script>
+</body>
+</html>
+
